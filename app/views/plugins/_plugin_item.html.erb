@@ -1,0 +1,13 @@
+<a href="<%= plugin_path(plugin.id) %>">
+  <div class="bg-white rounded-lg p-4 border border-darkerWhite hover:border-primary hover:border-1 hover:bg-fadedWhite rows shadow-sm shadow-darkWhite h-[156px]">
+    <div class="w-full h-[80px] bg-darkerWhite inline-block rounded-md">
+    </div>
+    <span class="block truncate mb-1">
+      <p class="font-medium text-black"> <%= plugin.name %> </p>
+    </span>
+    <div class="flex justify-between">
+      <p class="text-xs text-lighterBlack font-light"> <%= plugin.status %> </p>
+      <p class="text-xs text-lighterBlack font-light"> <%= plugin.created_at.strftime("%m-%d-%Y") %> </p>
+    </div>
+  </div>
+</a>

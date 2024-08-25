@@ -1,0 +1,14 @@
+<div class="p-4">
+  <div class="flex items-center gap-4">
+    <%= image_tag "icons/danger_icon.svg", class: "w-8 h-8" %>
+    <div>
+      <p class="text-lg font-medium text-black"> Danger Zone </p>
+      <p class="text-lightBlack text-sm"> Irreversible and destructive actions regarding this plugin. </p>
+    </div>
+  </div>
+</div>
+<%= button_to @plugin, method: :delete, class: "rounded-lg m-4 py-2 px-4 hover:bg-red-50 font-medium flex gap-2 items-center border border-red-200 text-red-400", data: {
+    turbo_confirm: "Are you sureness? Really?" } do %>
+  <%= image_tag "icons/red_delete_icon.svg" %>
+  Delete Plugin
+<% end %>

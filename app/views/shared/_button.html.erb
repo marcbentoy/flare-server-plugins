@@ -1,0 +1,8 @@
+<a href="<%= path %>">
+  <div class="inline-flex items-center justify-items-center rounded-md py-2 px-3 bg-darkWhite text-lighterBlack font-medium border-solid border border-darkerWhite text-sm">
+    <% if icon_path != nil %>
+      <%= image_tag icon_path, class: "mr-2" %>
+    <% end %>
+    <p> <%= name %> </p>
+  </div>
+</a>

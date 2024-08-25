@@ -1,0 +1,6 @@
+<a href="<%= side_menu[:dest] %>">  
+  <div class="flex rounded-md hover:bg-darkerWhite <%= "bg-darkerWhite" if side_menu[:selected] %> mx-2 my-1 p-2 items-center">
+    <%= image_tag side_menu[:icon_path], class: "w-5 h-5 text-darkerWhite mr-2" %>
+    <p class="<%= "text-lighterBlack" unless side_menu[:selected] %> <%= "text-black" if side_menu[:selected] %> text-xs font-medium"><%= side_menu[:name] %></p>
+  </div>
+</a>

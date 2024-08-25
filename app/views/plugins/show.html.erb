@@ -1,15 +1,18 @@
-<div class="mx-auto md:w-2/3 w-full flex">
-  <div class="mx-auto">
-    <% if notice.present? %>
-      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-    <% end %>
-
-    <%= render @plugin %>
-
-    <%= link_to "Edit this plugin", edit_plugin_path(@plugin), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to "Back to plugins", plugins_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <div class="inline-block ml-2">
-      <%= button_to "Destroy this plugin", @plugin, method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+<div class="w-full">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 text-green-500 font-medium rounded-lg inline-block w-full" id="notice"><%= notice %></p>
+  <% end %>
+  <!-- headline -->
+  <div class="flex w-full">
+    <div class="m-4 flex-1">
+      <p class="font-bold text-2xl text-black">
+        <%= @plugin.name %>
+      </p>
+      <p class="text-lighterBlack"> <%= @plugin.description %> </p>
     </div>
   </div>
+  <!-- releases -->
+  <% @plugin_releases.each do |release| %>
+    <%= render "plugin_releases/release_item", release: release %>
+  <% end %>
 </div>

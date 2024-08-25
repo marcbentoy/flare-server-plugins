@@ -6,9 +6,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= yield :head %>
-
     <link rel="manifest" href="/manifest.json">
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
@@ -17,11 +15,59 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-
   <body>
-    <main class="pt-4 px-4">
-      <!-- Sidebar -->
-      <%= yield %>
-    </main>
+    <div class="w-full flex">
+      <!-- sidebar -->
+      <div class="w-[256px] bg-darkWhite border-solid border-r border-darkerWhite flex flex-col h-dvh sticky top-0">
+        <!-- logo -->
+        <a href="<%= plugins_path %>">
+          <div class="border-solid border-b border-darkerWhite p-4 h-[56px] flex items-center">
+            <%= image_tag "logo.png", class: "w-8 h-8" %>
+            <p class="font-medium text-black"> flare plugins </p>
+          </div>
+        </a>
+        <!-- side menu -->
+        <div class="w-full p-2 flex-1">
+          <% @side_menu.each do |side_menu| %>
+            <%= render "shared/sidemenu_item", side_menu: side_menu %>
+          <% end%>
+        </div>
+        <!-- account -->
+        <div class="flex-none flex justify-between p-2 text-center">
+          <div class="w-8 h-8 rounded-full bg-darkerWhite"> </div>
+          <p> marcbentoy </p>
+          <div class="w-8 h-8 rounded-sm bg-darkerWhite">  </div>
+        </div>
+      </div>
+
+      <!-- main content -->
+      <div class="flex-1 w-full">
+        <!-- topbar -->
+        <div class="w-full bg-white border-solid border-b border-darkerWhite flex flex-row p-4 justify-between h-[56px] items-center top-0 sticky">
+          <!-- breadcrumbs  -->
+          <div class="flex">
+            <% @breadcrumbs.each_with_index do |breadcrumb, index| %>
+              <% if index == @breadcrumbs.length - 1 %>
+                <span class="font-medium text-black"> <%= breadcrumb[:name] %> </span>
+              <% else %>
+                <div class="flex">
+                  <%= link_to breadcrumb[:name], breadcrumb[:path], class: "mr-2 text-lighterBlack" %>
+                  <%= image_tag "icons/right_arrow_icon.svg", class: "mr-2" %>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+
+          <!-- actions -->
+          <div class="flex gap-x-2">
+            <% @action_buttons.each do |action_button| %>
+              <%= render "shared/button", name: action_button[:name], icon_path: action_button[:icon_path], path: action_button[:path] %>
+            <% end %>
+          </div>
+        </div>
+
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>

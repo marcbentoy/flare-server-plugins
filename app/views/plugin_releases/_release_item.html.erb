@@ -1,0 +1,22 @@
+<a href="<%= plugin_plugin_release_url(release) %>">
+  <div class="w-full hover:bg-fadedWhite p-4 flex gap-4">
+    <!-- indicator -->
+    <%= image_tag "icons/prod_indicator_icon.svg" %>
+    <!-- content -->
+    <div class="flex-1">
+      <div class="flex gap-2 items-center mb-1">
+        <p class="px-2 py-1 text-white bg-primary text-xs font-medium rounded-full h-max w-max"> In prod </p>
+        <p class="font-medium text-black text-lg"> <%= release.code_name %> </p>
+      </div>
+      <div class="flex gap-2 items-center">
+        <p class="font-medium text-sm text-lighterBlack"> v<%= release.major %>.<%= release.minor %>.<%= release.patch %> </p>
+        <d class="w-1 h-1 rounded-full bg-lighterBlack">  </d>
+        <p class="font-light text-sm text-lighterBlack"> 2 months ago </p>
+        <d class="w-1 h-1 rounded-full bg-lighterBlack">  </d>
+        <p class="font-light text-sm text-lighterBlack"> 11 installs </p>
+      </div>
+    </div>
+    <!-- arrow  -->
+    <%= image_tag "icons/right_arrow_icon.svg" %>
+  </div>
+</a>
